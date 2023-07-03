@@ -1,13 +1,9 @@
-import React from 'react';
+import React from "react";
 
 export default class Footer extends React.Component {
   render() {
-    return (
-      <footer className="nt-app-footer">
-        Such Footer
-      </footer>
-    );
+    return <footer className="nt-app-footer">Such Footer</footer>;
   }
 }
 
-Footer.displayName = 'Footer';
+Footer.displayName = "Footer";

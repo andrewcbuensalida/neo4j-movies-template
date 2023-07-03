@@ -1,7 +1,7 @@
-import {all, call, put, takeEvery} from 'redux-saga/effects';
-import MoviesApi from '../../api/MoviesApi';
-import * as Actions from '../actions/MovieActions';
-import * as Types from '../actions/MovieActionTypes';
+import { all, call, put, takeEvery } from "redux-saga/effects";
+import MoviesApi from "../../api/MoviesApi";
+import * as Actions from "../actions/MovieActions";
+import * as Types from "../actions/MovieActionTypes";
 
 export default function* movieFlow() {
   yield all([
@@ -18,19 +18,17 @@ function* getGenres() {
   try {
     const response = yield call(MoviesApi.getGenres);
     yield put(Actions.getGenresSuccess(response));
-  }
-  catch (error) {
+  } catch (error) {
     yield put(Actions.getGenresFailure(error));
   }
 }
 
 function* getMoviesByGenre(action) {
-  var {names} = action;
+  var { names } = action;
   try {
     const response = yield call(MoviesApi.getMoviesByGenres, names);
     yield put(Actions.getMoviesByGenresSuccess(response));
-  }
-  catch (error) {
+  } catch (error) {
     yield put(Actions.getMoviesByGenresFailure(error));
   }
 }
@@ -39,43 +37,39 @@ function* getFeaturedMovies() {
   try {
     const response = yield call(MoviesApi.getFeaturedMovies);
     yield put(Actions.getFeaturedMoviesSuccess(response));
-  }
-  catch (error) {
+  } catch (error) {
     yield put(Actions.getFeaturedMoviesFailure(error));
   }
 }
 
 function* getMovie(action) {
-  var {id} = action;
+  var { id } = action;
   try {
     const response = yield call(MoviesApi.getMovie, id);
     yield put(Actions.getMovieSuccess(response));
-  }
-  catch (error) {
+  } catch (error) {
     yield put(Actions.getMovieFailure(error));
   }
 }
 
 function* rateMovie(action) {
-  var {id, rating} = action;
+  var { id, rating } = action;
   try {
     const response = yield call(MoviesApi.rateMovie, id, rating);
     yield put(Actions.rateMovieSuccess(response));
     yield put(Actions.getMovie(id));
-  }
-  catch (error) {
+  } catch (error) {
     yield put(Actions.rateMovieFailure(error));
   }
 }
 
 function* deleteRating(action) {
-  var {id} = action;
+  var { id } = action;
   try {
     const response = yield call(MoviesApi.deleteRating, id);
     yield put(Actions.deleteMovieRatingSuccess(response));
     yield put(Actions.getMovie(id));
-  }
-  catch (error) {
+  } catch (error) {
     yield put(Actions.deleteMovieRatingFailure(error));
   }
 }

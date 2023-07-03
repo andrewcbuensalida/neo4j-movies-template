@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 
 export default class Loading extends React.Component {
-
   render() {
     return (
       <div className="sk-spinner sk-spinner-chasing-dots">
@@ -10,7 +9,6 @@ export default class Loading extends React.Component {
       </div>
     );
   }
-
 }
 
-Loading.displayName = 'Loading';
+Loading.displayName = "Loading";

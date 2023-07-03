@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // Breadcrumb Variables
@@ -20,7 +20,10 @@ $crumb-side-padding: rem-calc(12) !default;
 $crumb-function-factor: -10% !default;
 $crumb-border-size: 1px !default;
 $crumb-border-style: solid !default;
-$crumb-border-color: scale-color($crumb-bg, $lightness: $crumb-function-factor) !default;
+$crumb-border-color: scale-color(
+  $crumb-bg,
+  $lightness: $crumb-function-factor
+) !default;
 $crumb-radius: $global-radius !default;
 
 // We use these to set various text styles for breadcrumbs.
@@ -57,7 +60,6 @@ $crumb-slash-position: 1px !default;
 
 // We use this mixin to create breadcrumb styles from list items.
 @mixin crumbs {
-
   // A normal state will make the links look and act like clickable breadcrumbs.
   color: $crumb-font-color;
   float: $default-float;
@@ -66,7 +68,10 @@ $crumb-slash-position: 1px !default;
   margin: 0;
   text-transform: $crumb-font-transform;
 
-  &:hover a, &:focus a { text-decoration: $crumb-link-decor; }
+  &:hover a,
+  &:focus a {
+    text-decoration: $crumb-link-decor;
+  }
 
   a {
     color: $crumb-font-color;
@@ -81,14 +86,20 @@ $crumb-slash-position: 1px !default;
       cursor: $cursor-default-value;
     }
 
-    &:hover, &:hover a,
-    &:focus, &:focus a { text-decoration: none; }
+    &:hover,
+    &:hover a,
+    &:focus,
+    &:focus a {
+      text-decoration: none;
+    }
   }
 
   // Unavailable removed color and link styles so it looks inactive.
   &.unavailable {
     color: $crumb-font-color-unavailable;
-    a { color: $crumb-font-color-unavailable; }
+    a {
+      color: $crumb-font-color-unavailable;
+    }
 
     &:hover,
     &:hover a,

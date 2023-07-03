@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -20,10 +20,16 @@ $keystroke-function-factor: -7% !default;
 $keystroke-padding: rem-calc(2 4 0) !default;
 
 // We use these to control background and border styles.
-$keystroke-bg: scale-color($white, $lightness: $keystroke-function-factor) !default;
+$keystroke-bg: scale-color(
+  $white,
+  $lightness: $keystroke-function-factor
+) !default;
 $keystroke-border-style: solid !default;
 $keystroke-border-width: 1px !default;
-$keystroke-border-color: scale-color($keystroke-bg, $lightness: $keystroke-function-factor) !default;
+$keystroke-border-color: scale-color(
+  $keystroke-bg,
+  $lightness: $keystroke-function-factor
+) !default;
 $keystroke-radius: $global-radius !default;
 
 //
@@ -31,15 +37,18 @@ $keystroke-radius: $global-radius !default;
 //
 // We use this mixin to create keystroke styles.
 // $bg - Default: $keystroke-bg || scale-color($white, $lightness: $keystroke-function-factor) !default;
-@mixin keystroke($bg:$keystroke-bg) {
+@mixin keystroke($bg: $keystroke-bg) {
   // This find the lightness percentage of the background color.
   $bg-lightness: lightness($bg);
   background-color: $bg;
   border-color: scale-color($bg, $lightness: $keystroke-function-factor);
 
   // We adjust the font color based on the brightness of the background.
-  @if $bg-lightness > 70% { color: $keystroke-font-color; }
-  @else { color: $keystroke-font-color-alt; }
+  @if $bg-lightness > 70% {
+    color: $keystroke-font-color;
+  } @else {
+    color: $keystroke-font-color-alt;
+  }
 
   border-style: $keystroke-border-style;
   border-width: $keystroke-border-width;
@@ -50,7 +59,7 @@ $keystroke-radius: $global-radius !default;
 }
 
 @include exports("keystroke") {
-  @if $include-html-keystroke-classes  {
+  @if $include-html-keystroke-classes {
     .keystroke,
     kbd {
       @include keystroke;

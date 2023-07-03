@@ -1,5 +1,8 @@
-import _ from 'lodash';
-import {NotificationActionTypes, NotificationType} from './NotificationActionTypes';
+import _ from "lodash";
+import {
+  NotificationActionTypes,
+  NotificationType,
+} from "./NotificationActionTypes";
 
 export function create(type, message) {
   return {
@@ -7,8 +10,8 @@ export function create(type, message) {
     notification: {
       id: _.uniqueId(),
       message,
-      type
-    }
+      type,
+    },
   };
 }
 
@@ -18,8 +21,8 @@ export function createError(message) {
     notification: {
       id: _.uniqueId(),
       message,
-      type: NotificationType.error
-    }
+      type: NotificationType.error,
+    },
   };
 }
 
@@ -29,14 +32,14 @@ export function createSuccess(message) {
     notification: {
       id: _.uniqueId(),
       message,
-      type: NotificationType.success
-    }
+      type: NotificationType.success,
+    },
   };
 }
 
 export function dismiss(notification) {
   return {
     type: NotificationActionTypes.DISMISS_NOTIFICATION,
-    notification
+    notification,
   };
 }

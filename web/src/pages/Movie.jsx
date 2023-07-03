@@ -1,17 +1,16 @@
-import React from 'react';
-import _ from 'lodash';
-import Loading from '../components/Loading.jsx';
-import Carousel from '../components/Carousel.jsx';
-import UserRating from '../components/UserRating.jsx';
-import {Link} from 'react-router-dom';
-import * as MovieActions from '../redux/actions/MovieActions';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-
+import React from "react";
+import _ from "lodash";
+import Loading from "../components/Loading.jsx";
+import Carousel from "../components/Carousel.jsx";
+import UserRating from "../components/UserRating.jsx";
+import { Link } from "react-router-dom";
+import * as MovieActions from "../redux/actions/MovieActions";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 class Movie extends React.Component {
   componentDidMount() {
-    var {id} = this.props.match.params;
+    var { id } = this.props.match.params;
     this.props.getMovie(id);
   }
 
@@ -19,7 +18,7 @@ class Movie extends React.Component {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.props.clearMovie();
 
-      var {id} = this.props.match.params;
+      var { id } = this.props.match.params;
       this.props.getMovie(id);
     }
   }
@@ -29,12 +28,13 @@ class Movie extends React.Component {
   }
 
   render() {
-    var {isFetching, movie, rateMovie, deleteMovieRating, profile} = this.props;
+    var { isFetching, movie, rateMovie, deleteMovieRating, profile } =
+      this.props;
 
     return (
       <div className="nt-movie">
-        {isFetching ? <Loading/> : null}
-        {movie ?
+        {isFetching ? <Loading /> : null}
+        {movie ? (
           <div>
             <div className="row">
               <div className="large-12 columns">
@@ -43,13 +43,13 @@ class Movie extends React.Component {
             </div>
             <div className="row">
               <div className="small-12 medium-4 columns nt-movie-aside">
-                <img className="nt-movie-poster"
-                     src={movie.posterImage}
-                     alt="" />
+                <img
+                  className="nt-movie-poster"
+                  src={movie.posterImage}
+                  alt=""
+                />
                 <div className="nt-box">
-                  <div className="nt-box-title">
-                    Storyline
-                  </div>
+                  <div className="nt-box-title">Storyline</div>
                   <p className="nt-box-row">
                     <span>{movie.tagline}</span>
                   </p>
@@ -57,28 +57,28 @@ class Movie extends React.Component {
               </div>
               <div className="small-12 medium-8 columns nt-movie-main">
                 <div>
-                  {profile ?
+                  {profile ? (
                     <div className="nt-box">
                       <p className="nt-box-row nt-movie-rating">
                         <strong>Your rating: </strong>
-                        <UserRating movieId={movie.id}
-                                    savedRating={movie.myRating}
-                                    onSubmitRating={rateMovie}
-                                    onDeleteRating={deleteMovieRating}/>
+                        <UserRating
+                          movieId={movie.id}
+                          savedRating={movie.myRating}
+                          onSubmitRating={rateMovie}
+                          onDeleteRating={deleteMovieRating}
+                        />
                       </p>
                     </div>
-                    :
-                    null
-                  }
+                  ) : null}
                   <div className="nt-box">
-                    <div className="nt-box-title">
-                      Movie Details
-                    </div>
+                    <div className="nt-box-title">Movie Details</div>
                     <p className="nt-box-row">
-                      <strong>Year: </strong><span>{movie.released}</span>
+                      <strong>Year: </strong>
+                      <span>{movie.released}</span>
                     </p>
                     <p className="nt-box-row">
-                      <strong>Duration: </strong><span>{`${movie.duration} mins`}</span>
+                      <strong>Duration: </strong>
+                      <span>{`${movie.duration} mins`}</span>
                     </p>
                     <p className="nt-box-row">
                       <strong>Genres: </strong>
@@ -90,35 +90,28 @@ class Movie extends React.Component {
                     </p>
                   </div>
                   <div className="nt-box">
-                    <div className="nt-box-title">
-                      Cast
-                    </div>
+                    <div className="nt-box-title">Cast</div>
                     <div>{this.renderCast(movie.actors)}</div>
                   </div>
                 </div>
               </div>
               <div className="small-12 columns">
                 <div className="nt-box">
-                  <div className="nt-box-title">
-                    Related
-                  </div>
+                  <div className="nt-box-title">Related</div>
                   {this.renderRelatedMovies(movie.related)}
                 </div>
               </div>
             </div>
           </div>
-          :
-          null
-        }
+        ) : null}
       </div>
     );
   }
 
   getKeywordsText(movie) {
-    _.filter(movie.keywords, k => {
+    _.filter(movie.keywords, (k) => {
       return !!k.name;
-    })
-      .join(', ');
+    }).join(", ");
   }
 
   renderCast(actors) {
@@ -128,20 +121,21 @@ class Movie extends React.Component {
 
     return (
       <Carousel>
-        {
-          actors.map(a => {
-            return (
-              <div key={a.id}>
-                <Link to={`/person/${a.id}`}>
-                  <img src={a.posterImage} alt="" />
-                </Link>
-                <div className="nt-carousel-actor-name"><Link to={`/person/${a.id}`}>{a.name}</Link></div>
-                <div className="nt-carousel-actor-role">{a.role}</div>
+        {actors.map((a) => {
+          return (
+            <div key={a.id}>
+              <Link to={`/person/${a.id}`}>
+                <img src={a.posterImage} alt="" />
+              </Link>
+              <div className="nt-carousel-actor-name">
+                <Link to={`/person/${a.id}`}>{a.name}</Link>
               </div>
-            );
-          })
-        }
-      </Carousel>);
+              <div className="nt-carousel-actor-role">{a.role}</div>
+            </div>
+          );
+        })}
+      </Carousel>
+    );
   }
 
   renderRelatedMovies(movies) {
@@ -151,49 +145,51 @@ class Movie extends React.Component {
 
     return (
       <Carousel>
-        {
-          movies.map(m => {
-            return (
-              <div key={m.id}>
-                <Link to={`/movie/${m.id}`}>
-                  <img src={m.posterImage} alt="" />
-                </Link>
-                <div className="nt-carousel-movie-title">
-                  <Link to={`/movie/${m.id}`}>{m.title}</Link>
-                </div>
+        {movies.map((m) => {
+          return (
+            <div key={m.id}>
+              <Link to={`/movie/${m.id}`}>
+                <img src={m.posterImage} alt="" />
+              </Link>
+              <div className="nt-carousel-movie-title">
+                <Link to={`/movie/${m.id}`}>{m.title}</Link>
               </div>
-            );
-          })
-        }
-      </Carousel>);
+            </div>
+          );
+        })}
+      </Carousel>
+    );
   }
 
   renderPeople(people) {
     return people.map((p, i) => {
       return (
         <span key={p.id}>
-        <Link to={`/person/${p.id}`}>{p.name}</Link>
+          <Link to={`/person/${p.id}`}>{p.name}</Link>
           {i < people.length - 1 ? <span>, </span> : null}
-      </span>);
+        </span>
+      );
     });
   }
 
   renderGenre(genres) {
     return genres.map((g, i) => {
-      return (<span key={g.id}>
-        {g.name}
-        {i < genres.length - 1 ? <span>, </span> : null}
-      </span>);
+      return (
+        <span key={g.id}>
+          {g.name}
+          {i < genres.length - 1 ? <span>, </span> : null}
+        </span>
+      );
     });
   }
 }
-Movie.displayName = 'Movie';
+Movie.displayName = "Movie";
 
 function mapStateToProps(state) {
   return {
     movie: state.movies.detail,
     isFetching: state.movies.isFetching,
-    profile: _.get(state, 'profile.profile')
+    profile: _.get(state, "profile.profile"),
   };
 }
 

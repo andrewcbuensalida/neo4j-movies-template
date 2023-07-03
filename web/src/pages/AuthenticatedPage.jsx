@@ -1,15 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
-import {connect} from 'react-redux';
+import React from "react";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router";
+import { connect } from "react-redux";
 
 /**
  * Higher ordered component for pages requiring authentication.
  */
 var AuthenticatedPage = (PageComponent) => {
-
   class AuthenticatedPage extends React.Component {
-
     constructor() {
       super();
 
@@ -17,11 +15,11 @@ var AuthenticatedPage = (PageComponent) => {
     }
 
     componentWillMount() {
-      var {auth, location, history} = this.props;
+      var { auth, location, history } = this.props;
 
       if (!auth.token) {
-        var query = {redirectTo: (location.pathname + location.search)};
-        history.push({pathname: '/login', query});
+        var query = { redirectTo: location.pathname + location.search };
+        history.push({ pathname: "/login", query });
       }
     }
 
@@ -30,31 +28,31 @@ var AuthenticatedPage = (PageComponent) => {
     }
 
     redirectOnLogout(props) {
-      var {auth, location, history} = props;
+      var { auth, location, history } = props;
 
-      if (!auth.token && location.pathname !== '/login') {
-        history.push('/login');
+      if (!auth.token && location.pathname !== "/login") {
+        history.push("/login");
       }
     }
 
     render() {
-      var {auth} = this.props;
+      var { auth } = this.props;
       if (!auth.token) {
         return null;
       }
 
-      return (<PageComponent ref="page" {...this.props}/>);
+      return <PageComponent ref="page" {...this.props} />;
     }
   }
 
-  AuthenticatedPage.displayName = 'AuthenticatedPage';
+  AuthenticatedPage.displayName = "AuthenticatedPage";
   AuthenticatedPage.contextTypes = {
-    router: PropTypes.object.isRequired
+    router: PropTypes.object.isRequired,
   };
 
   function mapStateToProps(state) {
     return {
-      auth: state.auth
+      auth: state.auth,
     };
   }
 
@@ -63,4 +61,3 @@ var AuthenticatedPage = (PageComponent) => {
 };
 
 export default AuthenticatedPage;
-

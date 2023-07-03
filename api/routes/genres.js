@@ -1,6 +1,6 @@
-const Genres = require("../models/genres")
-  , writeResponse = require('../helpers/response').writeResponse
-  , dbUtils = require('../neo4j/dbUtils');
+const Genres = require("../models/genres"),
+  writeResponse = require("../helpers/response").writeResponse,
+  dbUtils = require("../neo4j/dbUtils");
 
 /**
  * @swagger
@@ -34,6 +34,6 @@ const Genres = require("../models/genres")
  */
 exports.list = function (req, res, next) {
   Genres.getAll(dbUtils.getSession(req))
-    .then(response => writeResponse(res, response))
+    .then((response) => writeResponse(res, response))
     .catch(next);
 };

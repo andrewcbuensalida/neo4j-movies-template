@@ -1,15 +1,14 @@
-import settings from '../config/settings';
-import axios from './axios';
+import settings from "../config/settings";
+import axios from "./axios";
 
-const {apiBaseURL} = settings;
+const { apiBaseURL } = settings;
 
 export default class AuthApi {
   static login(username, password) {
-    return axios.post(`${apiBaseURL}/login`,
-      {
-        username, password
-      }
-    );
+    return axios.post(`${apiBaseURL}/login`, {
+      username,
+      password,
+    });
   }
 
   static register(profile) {

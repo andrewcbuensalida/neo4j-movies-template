@@ -1,14 +1,14 @@
 class UserSession {
   static setToken(token) {
     if (token) {
-      window.localStorage.setItem('token', token);
+      window.localStorage.setItem("token", token);
     } else {
-      window.localStorage.removeItem('token');
+      window.localStorage.removeItem("token");
     }
   }
 
   static getToken() {
-    return window.localStorage.getItem('token');
+    return window.localStorage.getItem("token");
   }
 }
 

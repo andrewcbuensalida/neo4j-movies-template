@@ -12,4 +12,3 @@ exports.writeError = function writeError(res, error, status) {
     .status(error.status || status || 400)
     .send(JSON.stringify(_.omit(error, ["status"])));
 };
-

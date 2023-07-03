@@ -1,15 +1,14 @@
 {
-    "name": "NT Movie APP",
-    "env": {
-        "API_URL": {
-            "description": "URL of the API endpoint",
-            "required": true
-        }
-    },
-    "buildpacks": [
-        {
-            "url": "mars/create-react-app"
-        }
-    ]
+  "name": "NT Movie APP",
+  "env": {
+    "API_URL": {
+      "description": "URL of the API endpoint",
+      "required": true
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "mars/create-react-app"
+    }
+  ]
 }
-

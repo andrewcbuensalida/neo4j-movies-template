@@ -1,24 +1,28 @@
-import React from 'react';
-import Notification from './Notification.jsx';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as NotificationActions from '../../redux/actions/NotificationActions';
+import React from "react";
+import Notification from "./Notification.jsx";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as NotificationActions from "../../redux/actions/NotificationActions";
 
-const NotificationContainer = ({dismiss, notifications}) => {
-    return (
-      <div className="notification-container">
-        {
-          notifications.map((notification, index) => <Notification key={index} notification={notification} dismiss={dismiss}/>)
-        }
-      </div>
-    );
+const NotificationContainer = ({ dismiss, notifications }) => {
+  return (
+    <div className="notification-container">
+      {notifications.map((notification, index) => (
+        <Notification
+          key={index}
+          notification={notification}
+          dismiss={dismiss}
+        />
+      ))}
+    </div>
+  );
 };
 
-NotificationContainer.displayName = 'NotificationContainer';
+NotificationContainer.displayName = "NotificationContainer";
 
 function mapStateToProps(state) {
   return {
-    notifications: state.notifications
+    notifications: state.notifications,
   };
 }
 
@@ -27,5 +31,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 // Wrap the component to inject dispatch and state into it
-export default connect(mapStateToProps, mapDispatchToProps)(NotificationContainer);
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NotificationContainer);

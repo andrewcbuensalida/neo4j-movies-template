@@ -1,12 +1,11 @@
 {
-    "root": "build/",
-    "routes": {
-        "/**": "index.html"
-    },
-    "proxies": {
-        "/api/v0": {
-            "origin": "${REACT_APP_PROXY_URL}"
-        }
+  "root": "build/",
+  "routes": {
+    "/**": "index.html"
+  },
+  "proxies": {
+    "/api/v0": {
+      "origin": "${REACT_APP_PROXY_URL}"
     }
+  }
 }
-

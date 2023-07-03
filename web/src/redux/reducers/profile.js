@@ -1,5 +1,5 @@
-import * as Types from '../actions/ProfileActionTypes';
-import {LOGOUT} from '../actions/AuthActionTypes';
+import * as Types from "../actions/ProfileActionTypes";
+import { LOGOUT } from "../actions/AuthActionTypes";
 
 export default function profile(state = getInitialState(null), action) {
   switch (action.type) {
@@ -12,32 +12,32 @@ export default function profile(state = getInitialState(null), action) {
     case Types.PROFILE_GET_RECOMMENDATIONS:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
     case Types.PROFILE_GET_FAILURE:
     case Types.PROFILE_GET_RATINGS_FAILURE:
     case Types.PROFILE_GET_RECOMMENDATIONS_FAILURE:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
       };
     case Types.PROFILE_GET_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        profile: action.payload
+        profile: action.payload,
       };
     case Types.PROFILE_GET_RATINGS_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        ratedMovies: action.payload
+        ratedMovies: action.payload,
       };
     case Types.PROFILE_GET_RECOMMENDATIONS_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        recommendedMovies: action.payload
+        recommendedMovies: action.payload,
       };
   }
 }
@@ -47,6 +47,6 @@ function getInitialState() {
     isFetching: false,
     profile: null,
     ratedMovies: [],
-    recommendedMovies: []
+    recommendedMovies: [],
   };
 }

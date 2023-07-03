@@ -2,8 +2,8 @@
 
 This Neo4j-based example app displays movie and person data in a manner similar to IMDB.
 It is designed to serve as a template for further development projects.
-There are two versions of the backend - a Python/Flask backend at `/flask-api`, and a JavaScript/Express backend at `/api`. 
-The web frontend can be found at `/web`. 
+There are two versions of the backend - a Python/Flask backend at `/flask-api`, and a JavaScript/Express backend at `/api`.
+The web frontend can be found at `/web`.
 Feel encouraged to fork and update this repo!
 
 ## The Model
@@ -12,40 +12,40 @@ Feel encouraged to fork and update this repo!
 
 ### Nodes
 
-* `Movie`
-* `Person`
-* `Genre`
+- `Movie`
+- `Person`
+- `Genre`
 
 ### Relationships
 
-* `(:Person)-[:ACTED_IN {role:"some role"}]->(:Movie)`
-* `(:Person)-[:DIRECTED]->(:Movie)`
-* `(:Person)-[:WRITER_OF]->(:Movie)`
-* `(:Person)-[:PRODUCED]->(:Movie)`
-* `(:MOVIE)-[:HAS_GENRE]->(:Genre)`
+- `(:Person)-[:ACTED_IN {role:"some role"}]->(:Movie)`
+- `(:Person)-[:DIRECTED]->(:Movie)`
+- `(:Person)-[:WRITER_OF]->(:Movie)`
+- `(:Person)-[:PRODUCED]->(:Movie)`
+- `(:MOVIE)-[:HAS_GENRE]->(:Genre)`
 
 ## Database Setup: Sandbox
 
 Go to https://sandbox.neo4j.com/?usecase=recommendations&ref=movie-app-tutorial, pick "Recommendations", and press play to start the database.
 
-Make sure to edit the file `flask-api/.env` or `api/.env` and update the `MOVIE_DATABASE_USERNAME`, 
+Make sure to edit the file `flask-api/.env` or `api/.env` and update the `MOVIE_DATABASE_USERNAME`,
 `MOVIE_DATABASE_PASSWORD`, and `MOVIE_DATABASE_URL` of your chosen backend to connect to your instance.
 
 ## Node API
 
-First, configure your `api/.env` file to point to your database. 
+First, configure your `api/.env` file to point to your database.
 
 Then, from the root directory of this project:
 
-* `cd api`
-* `nvm use`
-* `npm install`
-* `node app.js` starts the API
-* Take a look at the docs at [http://localhost:3000/docs](http://localhost:3000/docs)
+- `cd api`
+- `nvm use`
+- `npm install`
+- `node app.js` starts the API
+- Take a look at the docs at [http://localhost:3000/docs](http://localhost:3000/docs)
 
 ## Alternative: Flask API
 
-First, configure your `flask-api/.env` file to point to your database. 
+First, configure your `flask-api/.env` file to point to your database.
 
 Then, from the root directory of this project:
 
@@ -58,22 +58,22 @@ export FLASK_APP=app.py
 flask run
 ```
 
-* Take a look at the docs at [http://localhost:5000/docs](http://localhost:5000/docs)
+- Take a look at the docs at [http://localhost:5000/docs](http://localhost:5000/docs)
 
 ## Frontend
 
 From the root directory of this project, set up and start the frontend with:
 
-* `cd web`
-* `nvm use`
-* `npm install`
-* update `web/.env` file
+- `cd web`
+- `nvm use`
+- `npm install`
+- update `web/.env` file
 
 If you are using the Node API set `REACT_APP_API_BASE_URL` to `http://localhost:3000/api/v0`
 
 If you are using the Flask api then set it to `http://localhost:5000/api/v0`
 
-* `npm start` starts the app on [http://localhost:3000/](http://localhost:3000/)
+- `npm start` starts the app on [http://localhost:3000/](http://localhost:3000/)
 
 ![image of PATH settings for NPM](./img/webUX.png)
 

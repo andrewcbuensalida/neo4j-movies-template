@@ -1,39 +1,39 @@
-import * as Types from '../actions/PersonActionTypes';
+import * as Types from "../actions/PersonActionTypes";
 
 const initialState = {
   isFetching: false,
   isFetchingRelated: false,
   detail: null,
-  related: []
+  related: [],
 };
 
-export default function person(state = {...initialState}, action) {
+export default function person(state = { ...initialState }, action) {
   switch (action.type) {
     case Types.PERSON_DETAIL_GET_REQUEST:
-      return  {
+      return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
     case Types.PERSON_DETAIL_GET_SUCCESS:
-      return  {
+      return {
         ...state,
         isFetching: false,
-        detail: action.response
+        detail: action.response,
       };
     case Types.PERSON_DETAIL_CLEAR:
-      return  {
-        ...initialState
+      return {
+        ...initialState,
       };
     case Types.PERSON_RELATED_GET_REQUEST:
-      return  {
+      return {
         ...state,
-        isFetchingRelated: true
+        isFetchingRelated: true,
       };
     case Types.PERSON_RELATED_GET_SUCCESS:
-      return  {
+      return {
         ...state,
         isFetchingRelated: false,
-        related: action.response.related
+        related: action.response.related,
       };
 
     default:

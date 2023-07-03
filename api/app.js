@@ -18,6 +18,11 @@ var app = express(),
 
 app.use(nconf.get("api_path"), api);
 
+api.get("/test1", (req, res, next) => {
+  console.log("hello");
+  next();
+});
+
 var swaggerDefinition = {
   info: {
     title: "Neo4j Movie Demo API (Node/Express)",

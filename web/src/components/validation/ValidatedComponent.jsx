@@ -1,5 +1,5 @@
-import React from 'react'
-import _ from 'lodash'
+import React from "react";
+import _ from "lodash";
 
 /**
  * A higher ordered component containing boilerplate code for handling validation of internal input fields.
@@ -11,71 +11,71 @@ import _ from 'lodash'
 export const ValidatorContext = React.createContext({
   registerValidator: () => {},
   unregisterValidator: () => {},
-})
+});
 
-const ValidatedComponent = ComposedComponent => {
+const ValidatedComponent = (ComposedComponent) => {
   class ValidatedComponent extends React.Component {
     constructor() {
-      super()
-      this.validators = []
+      super();
+      this.validators = [];
     }
 
     getValidationFormProps() {
       return {
         isComponentValid: this.isValid.bind(this),
         getValidationMessages: this.getValidationMessages.bind(this),
-      }
+      };
     }
 
     getFieldValidatorContext() {
       return {
         registerValidator: this.onRegisterValidator.bind(this),
         unregisterValidator: this.onUnregisterValidator.bind(this),
-      }
+      };
     }
 
     onRegisterValidator(validator) {
-      this.validators.push(validator)
+      this.validators.push(validator);
     }
 
     onUnregisterValidator(owner) {
-      _.remove(this.validators, {owner})
+      _.remove(this.validators, { owner });
     }
 
     isValid() {
-      let isValid = true
-      this.validators.forEach(v => {
-        v.owner.validate()
-        isValid = isValid && v.owner.isValid()
-      })
-      return isValid
+      let isValid = true;
+      this.validators.forEach((v) => {
+        v.owner.validate();
+        isValid = isValid && v.owner.isValid();
+      });
+      return isValid;
     }
 
     getValidationMessages() {
-      const results = []
-      this.validators.forEach(v => {
-        const message = v.owner.getValidationMessage()
+      const results = [];
+      this.validators.forEach((v) => {
+        const message = v.owner.getValidationMessage();
         if (message) {
-          results.push(message)
+          results.push(message);
         }
-      })
+      });
 
-      return results
+      return results;
     }
 
     render() {
-      const newProps = {...this.props, ...this.getValidationFormProps()}
+      const newProps = { ...this.props, ...this.getValidationFormProps() };
       return (
         <ValidatorContext.Provider value={this.getFieldValidatorContext()}>
           <ComposedComponent {...newProps} />
         </ValidatorContext.Provider>
-      )
+      );
     }
   }
 
-  ValidatedComponent.displayName = 'ValidatedComponent'
+  ValidatedComponent.displayName = "ValidatedComponent";
 
-  return ValidatedComponent
-}
+  return ValidatedComponent;
+};
 
-export default ValidatedComponent
+export default ValidatedComponent;

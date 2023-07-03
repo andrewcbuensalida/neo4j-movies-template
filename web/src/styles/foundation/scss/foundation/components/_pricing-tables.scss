@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -32,7 +32,6 @@ $price-money-color: $oil !default;
 $price-money-weight: $font-weight-normal !default;
 $price-money-size: rem-calc(32) !default;
 $price-money-font-family: $body-font-family !default;
-
 
 // We use these to control the description styles
 $price-bg: $white !default;
@@ -134,17 +133,25 @@ $price-cta-padding: rem-calc(20 20 0) !default;
 
 @include exports("pricing-table") {
   @if $include-html-pricing-classes {
-
     /* Pricing Tables */
     .pricing-table {
       @include pricing-table-container;
 
-      .title { @include pricing-table-title; }
-      .price { @include pricing-table-price; }
-      .description { @include pricing-table-description; }
-      .bullet-item { @include pricing-table-bullet; }
-      .cta-button { @include pricing-table-cta; }
+      .title {
+        @include pricing-table-title;
+      }
+      .price {
+        @include pricing-table-price;
+      }
+      .description {
+        @include pricing-table-description;
+      }
+      .bullet-item {
+        @include pricing-table-bullet;
+      }
+      .cta-button {
+        @include pricing-table-cta;
+      }
     }
-
   }
 }

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -34,7 +34,8 @@ $progress-meter-alert-color: $alert-color !default;
 // We use this to set up the progress bar container
 @mixin progress-container {
   background-color: $progress-bar-color;
-  border: $progress-bar-border-size $progress-bar-border-style $progress-bar-border-color;
+  border: $progress-bar-border-size $progress-bar-border-style
+    $progress-bar-border-color;
   height: $progress-bar-height;
   margin-bottom: $progress-bar-margin-bottom;
   padding: $progress-bar-pad;
@@ -43,7 +44,7 @@ $progress-meter-alert-color: $alert-color !default;
 // @mixins
 //
 // $bg - Default: $progress-meter-color || $primary-color
-@mixin progress-meter($bg:$progress-meter-color) {
+@mixin progress-meter($bg: $progress-meter-color) {
   background: $bg;
   display: block;
   height: 100%;
@@ -51,10 +52,8 @@ $progress-meter-alert-color: $alert-color !default;
   width: 0%;
 }
 
-
 @include exports("progress-bar") {
   @if $include-html-media-classes {
-
     /* Progress Bar */
     .progress {
       @include progress-container;
@@ -63,23 +62,39 @@ $progress-meter-alert-color: $alert-color !default;
       .meter {
         @include progress-meter;
 
-        &.secondary { @include progress-meter($bg:$progress-meter-secondary-color); }
-        &.success { @include progress-meter($bg:$progress-meter-success-color); }
-        &.alert { @include progress-meter($bg:$progress-meter-alert-color); }
+        &.secondary {
+          @include progress-meter($bg: $progress-meter-secondary-color);
+        }
+        &.success {
+          @include progress-meter($bg: $progress-meter-success-color);
+        }
+        &.alert {
+          @include progress-meter($bg: $progress-meter-alert-color);
+        }
       }
-      &.secondary .meter { @include progress-meter($bg:$progress-meter-secondary-color); }
-      &.success .meter { @include progress-meter($bg:$progress-meter-success-color); }
-      &.alert .meter { @include progress-meter($bg:$progress-meter-alert-color); }
-
-      &.radius { @include radius($progress-bar-border-radius);
-        .meter { @include radius($progress-bar-border-radius - 1); }
+      &.secondary .meter {
+        @include progress-meter($bg: $progress-meter-secondary-color);
+      }
+      &.success .meter {
+        @include progress-meter($bg: $progress-meter-success-color);
+      }
+      &.alert .meter {
+        @include progress-meter($bg: $progress-meter-alert-color);
       }
 
-      &.round { @include radius(1000px);
-        .meter { @include radius(999px); }
+      &.radius {
+        @include radius($progress-bar-border-radius);
+        .meter {
+          @include radius($progress-bar-border-radius - 1);
+        }
       }
 
+      &.round {
+        @include radius(1000px);
+        .meter {
+          @include radius(999px);
+        }
+      }
     }
-
   }
 }

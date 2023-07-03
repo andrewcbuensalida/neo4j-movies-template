@@ -1,9 +1,6 @@
 {
   "name": "foundation",
-  "main": [
-    "scss/foundation.scss",
-    "js/foundation.js"
-  ],
+  "main": ["scss/foundation.scss", "js/foundation.js"],
   "ignore": [],
   "dependencies": {
     "jquery": ">= 2.1.0",

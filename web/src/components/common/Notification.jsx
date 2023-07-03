@@ -1,16 +1,15 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {NotificationType} from '../../redux/actions/NotificationActionTypes';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { NotificationType } from "../../redux/actions/NotificationActionTypes";
 
 export default class Notification extends Component {
-
   constructor(props) {
     super(props);
     this.dismiss = this.dismiss.bind(this);
   }
 
   componentDidMount() {
-    var {notification, dismiss, timeout} = this.props;
+    var { notification, dismiss, timeout } = this.props;
 
     this.dismissNotification = setTimeout(function () {
       dismiss(notification);
@@ -23,7 +22,7 @@ export default class Notification extends Component {
   }
 
   render() {
-    var {notification} = this.props;
+    var { notification } = this.props;
 
     if (!notification) {
       return null;
@@ -33,21 +32,22 @@ export default class Notification extends Component {
     var classes = NotificationType[notification.type] || notification.type;
 
     return (
-      <div data-alert className={'alert-box ' + classes}>
+      <div data-alert className={"alert-box " + classes}>
         {notification.message}
-        <button className="buttonLink close" onClick={this.dismiss}>&times;</button>
+        <button className="buttonLink close" onClick={this.dismiss}>
+          &times;
+        </button>
       </div>
     );
   }
 }
 
-
-Notification.displayName = 'Notification';
+Notification.displayName = "Notification";
 Notification.propTypes = {
   notification: PropTypes.object.isRequired,
   timeout: PropTypes.number,
-  dismiss: PropTypes.func
+  dismiss: PropTypes.func,
 };
 Notification.defaultProps = {
-  timeout: 6000
+  timeout: 6000,
 };

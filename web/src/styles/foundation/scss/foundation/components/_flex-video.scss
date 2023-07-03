@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -29,8 +29,12 @@ $flex-video-widescreen-padding-bottom: 56.34% !default;
   padding-top: $flex-video-padding-top;
   position: relative;
 
-  &.widescreen { padding-bottom: $flex-video-widescreen-padding-bottom; }
-  &.vimeo { padding-top: 0; }
+  &.widescreen {
+    padding-bottom: $flex-video-widescreen-padding-bottom;
+  }
+  &.vimeo {
+    padding-top: 0;
+  }
 
   iframe,
   object,
@@ -46,6 +50,8 @@ $flex-video-widescreen-padding-bottom: 56.34% !default;
 
 @include exports("flex-video") {
   @if $include-html-media-classes {
-    .flex-video { @include flex-video-container; }
+    .flex-video {
+      @include flex-video-container;
+    }
   }
 }

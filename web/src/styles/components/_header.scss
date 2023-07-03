@@ -1,6 +1,6 @@
 .nt-app-header {
   background: lightgrey;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   height: 104px;
   @media (max-width: 385px) {
     height: 145px;
@@ -22,7 +22,7 @@
 
     li {
       display: inline-block;
-      padding: .5rem 0 .5rem .5rem;
+      padding: 0.5rem 0 0.5rem 0.5rem;
 
       @media #{$small-only} {
         &::before {
@@ -31,7 +31,7 @@
       }
 
       &::before {
-        color: #AAAAAA;
+        color: #aaaaaa;
         content: "";
         border-right: 1px solid darkgray;
         margin: 0 1rem;
@@ -56,7 +56,7 @@
   &-link {
   }
 
-  &-profile-links{
+  &-profile-links {
     float: right;
     text-align: center;
     width: 64px;

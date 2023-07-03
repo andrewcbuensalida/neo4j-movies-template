@@ -1,6 +1,6 @@
-import * as Types from '../actions/AuthActionTypes';
-import UserSession from '../../UserSession';
-import ErrorUtils from '../../utils/ErrorUtils';
+import * as Types from "../actions/AuthActionTypes";
+import UserSession from "../../UserSession";
+import ErrorUtils from "../../utils/ErrorUtils";
 
 export default function auth(state = getInitialState(), action) {
   switch (action.type) {
@@ -8,12 +8,12 @@ export default function auth(state = getInitialState(), action) {
       return {
         ...state,
         isFetching: true,
-        errors: {}
+        errors: {},
       };
     case Types.LOGIN_SUCCESS:
       return {
         ...getInitialState(),
-        token: action.token
+        token: action.token,
       };
     case Types.LOGIN_FAILURE:
       return {
@@ -24,7 +24,7 @@ export default function auth(state = getInitialState(), action) {
     case Types.LOGOUT:
       return {
         ...state,
-        token: null
+        token: null,
       };
     default:
       return state;
@@ -35,7 +35,6 @@ function getInitialState() {
   return {
     isFetching: false,
     errors: {},
-    token: UserSession.getToken()
+    token: UserSession.getToken(),
   };
 }
-

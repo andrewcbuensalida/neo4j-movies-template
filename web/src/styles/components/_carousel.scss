@@ -1,5 +1,3 @@
-
-
 .nt-carousel {
   position: relative;
 
@@ -48,9 +46,8 @@
 }
 
 .nt-carousel-movie {
-
   &-title {
-    font-size: .8rem;
+    font-size: 0.8rem;
     height: 1.2rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -59,14 +56,13 @@
 
   &-role {
     font-style: italic;
-    font-size: .8rem;
+    font-size: 0.8rem;
     height: 1.2rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 }
-
 
 .nt-carousel-actor {
   &-name {
@@ -85,7 +81,3 @@
     white-space: nowrap;
   }
 }
-
-
-
-

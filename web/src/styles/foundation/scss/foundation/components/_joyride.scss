@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -36,16 +36,16 @@ $joyride-tip-close-size: 24px !default;
 $joyride-tip-close-weight: $font-weight-normal !default;
 
 // When Joyride is filling the screen, we use this style for the bg
-$joyride-screenfill: rgba(0,0,0,0.5) !default;
-
+$joyride-screenfill: rgba(0, 0, 0, 0.5) !default;
 
 // We decided not to make a mixin for this because it relies on
 // predefined classes to work properly.
 @include exports("joyride") {
   @if $include-html-joyride-classes {
-
     /* Foundation Joyride */
-    .joyride-list { display: none; }
+    .joyride-list {
+      display: none;
+    }
 
     /* Default styles for the container */
     .joyride-tip-guide {
@@ -71,9 +71,13 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
       padding: $joyride-tip-padding;
       width: 100%;
 
-      .button { margin-bottom: 0 !important; }
+      .button {
+        margin-bottom: 0 !important;
+      }
 
-      .joyride-prev-tip { margin-right: 10px; }
+      .joyride-prev-tip {
+        margin-right: 10px;
+      }
     }
 
     /* Add a little css triangle pip, older browser just miss out on the fanciness of it */
@@ -92,7 +96,7 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
           border-top-style: solid;
           border-#{$default-float}-color: transparent !important;
           border-#{$opposite-direction}-color: transparent !important;
-          top: -($joyride-tip-nub-size*2);
+          top: -($joyride-tip-nub-size * 2);
         }
         &.bottom {
           border-color: $joyride-tip-bg !important;
@@ -100,11 +104,15 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
           border-bottom-style: solid;
           border-#{$default-float}-color: transparent !important;
           border-#{$opposite-direction}-color: transparent !important;
-          bottom: -($joyride-tip-nub-size*2);
+          bottom: -($joyride-tip-nub-size * 2);
         }
 
-        &.right { right: -($joyride-tip-nub-size*2); }
-        &.left { left: -($joyride-tip-nub-size*2); }
+        &.right {
+          right: -($joyride-tip-nub-size * 2);
+        }
+        &.left {
+          left: -($joyride-tip-nub-size * 2);
+        }
       }
     }
 
@@ -145,14 +153,16 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
       color: $joyride-tip-close-color !important;
       font-size: $joyride-tip-close-size;
       font-weight: $joyride-tip-close-weight;
-      line-height: .5 !important;
+      line-height: 0.5 !important;
       position: absolute;
       text-decoration: none;
       top: 10px;
       #{$opposite-direction}: 12px;
 
       &:hover,
-      &:focus { color: $smoke !important; }
+      &:focus {
+        color: $smoke !important;
+      }
     }
 
     .joyride-modal-bg {
@@ -184,24 +194,26 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
       z-index: 9999;
     }
 
-
     /* Styles for screens that are at least 768px; */
     @media #{$small} {
-      .joyride-tip-guide { width: $joyride-tip-default-width; #{$default-float}: inherit;
+      .joyride-tip-guide {
+        width: $joyride-tip-default-width;
+        #{$default-float}: inherit;
         .joyride-nub {
           &.bottom {
             border-color: $joyride-tip-bg !important;
             border-bottom-color: transparent !important;
             border-#{$default-float}-color: transparent !important;
             border-#{$opposite-direction}-color: transparent !important;
-            bottom: -($joyride-tip-nub-size*2);
+            bottom: -($joyride-tip-nub-size * 2);
           }
           &.right {
             border-color: $joyride-tip-bg !important;
-            border-right-color: transparent !important; border-bottom-color: transparent !important;
+            border-right-color: transparent !important;
+            border-bottom-color: transparent !important;
             border-top-color: transparent !important;
             left: auto;
-            right: -($joyride-tip-nub-size*2);
+            right: -($joyride-tip-nub-size * 2);
             top: $joyride-tip-position-offset;
           }
           &.left {
@@ -209,7 +221,7 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
             border-bottom-color: transparent !important;
             border-left-color: transparent !important;
             border-top-color: transparent !important;
-            left: -($joyride-tip-nub-size*2);
+            left: -($joyride-tip-nub-size * 2);
             right: auto;
             top: $joyride-tip-position-offset;
           }

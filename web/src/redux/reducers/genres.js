@@ -1,22 +1,25 @@
-import { MOVIE_GENRES_GET_REQUEST, MOVIE_GENRES_GET_SUCCESS } from '../actions/MovieActionTypes';
+import {
+  MOVIE_GENRES_GET_REQUEST,
+  MOVIE_GENRES_GET_SUCCESS,
+} from "../actions/MovieActionTypes";
 
 const initialState = {
   isFetching: false,
-  items: []
+  items: [],
 };
 
 export default function genres(state = initialState, action) {
   switch (action.type) {
     case MOVIE_GENRES_GET_REQUEST:
-      return  {
+      return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
     case MOVIE_GENRES_GET_SUCCESS:
-      return  {
+      return {
         ...state,
         isFetching: false,
-        items: action.genres
+        items: action.genres,
       };
     default:
       return state;

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -12,7 +12,7 @@ $include-html-clearing-classes: $include-html-classes !default;
 // We use these to set the background colors for parts of Clearing.
 $clearing-bg: $oil !default;
 $clearing-caption-bg: $clearing-bg !default;
-$clearing-carousel-bg: rgba(51,51,51,0.8) !default;
+$clearing-carousel-bg: rgba(51, 51, 51, 0.8) !default;
 $clearing-img-bg: $clearing-bg !default;
 
 // We use these to style the close button
@@ -25,14 +25,14 @@ $clearing-arrow-color: $clearing-close-color !default;
 
 // We use these to style captions
 $clearing-caption-font-color: $iron !default;
-$clearing-caption-font-size: .875em !default;
+$clearing-caption-font-size: 0.875em !default;
 $clearing-caption-padding: 10px 30px 20px !default;
 
 // We use these to make the image and carousel height and style
 $clearing-active-img-height: 85% !default;
 $clearing-carousel-height: 120px !default;
 $clearing-carousel-thumb-width: 120px !default;
-$clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
+$clearing-carousel-thumb-active-border: 1px solid rgb(255, 255, 255) !default;
 
 @include exports("clearing") {
   @if $include-html-clearing-classes {
@@ -41,7 +41,8 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
     // The variables above should give enough control.
 
     /* Clearing Styles */
-    .clearing-thumbs, #{data('clearing')} {
+    .clearing-thumbs,
+    #{data('clearing')} {
       @include clearfix;
       list-style: none;
       margin-#{$default-float}: 0;
@@ -66,7 +67,9 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       z-index: 998;
       #{$default-float}: 0;
 
-      .clearing-close { display: block; }
+      .clearing-close {
+        display: block;
+      }
     }
 
     .clearing-container {
@@ -79,7 +82,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
 
     .clearing-touch-label {
       color: $base;
-      font-size: .6em;
+      font-size: 0.6em;
       left: 50%;
       position: absolute;
       top: 50%;
@@ -99,14 +102,13 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
           -ms-transform: translateY(-50%) translateX(-50%);
           -o-transform: translateY(-50%) translateX(-50%);
           transform: translateY(-50%) translateX(-50%);
-        }
-        @else {
+        } @else {
           -webkit-transform: translateY(-50%) translateX(50%);
           -moz-transform: translateY(-50%) translateX(50%);
           -ms-transform: translateY(-50%) translateX(50%);
           -o-transform: translateY(-50%) translateX(50%);
           transform: translateY(-50%) translateX(50%);
-        };
+        }
         max-height: 100%;
         max-width: 100%;
       }
@@ -136,11 +138,16 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       z-index: 999;
 
       &:hover,
-      &:focus { color: $iron; }
+      &:focus {
+        color: $iron;
+      }
     }
 
-    .clearing-assembled .clearing-container { height: 100%;
-      .carousel > ul { display: none; }
+    .clearing-assembled .clearing-container {
+      height: 100%;
+      .carousel > ul {
+        display: none;
+      }
     }
 
     // If you want to show a lightbox, but only have a single image come through as the thumbnail
@@ -166,7 +173,9 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
           position: absolute;
           top: 50%;
           width: 0;
-          &:hover { opacity: .8; }
+          &:hover {
+            opacity: 0.8;
+          }
         }
       }
       .clearing-main-prev {
@@ -186,10 +195,11 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       }
 
       .clearing-main-prev.disabled,
-      .clearing-main-next.disabled { opacity: .3; }
+      .clearing-main-next.disabled {
+        opacity: 0.3;
+      }
 
       .clearing-assembled .clearing-container {
-
         .carousel {
           background: $clearing-carousel-bg;
           height: $clearing-carousel-height;
@@ -210,7 +220,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
               float: $default-float;
               margin-#{$opposite-direction}: 0;
               min-height: inherit;
-              opacity: .4;
+              opacity: 0.4;
               overflow: hidden;
               padding: 0;
               position: relative;
@@ -234,8 +244,12 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
                 width: 100% !important;
               }
 
-              &.visible { opacity: 1; }
-              &:hover { opacity: .8; }
+              &.visible {
+                opacity: 1;
+              }
+              &:hover {
+                opacity: 0.8;
+              }
             }
           }
         }
@@ -255,6 +269,5 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
         #{$opposite-direction}: 20px;
       }
     }
-
   }
 }

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -45,7 +45,9 @@ $inline-list-children-display: block !default;
     float: $default-float;
     list-style: none;
     margin-#{$default-float}: $inline-list-default-float-list-margin;
-    > * { display: $inline-list-children-display; }
+    > * {
+      display: $inline-list-children-display;
+    }
   }
 }
 
