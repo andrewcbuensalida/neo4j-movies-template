@@ -1,4 +1,8 @@
 # README
+https://www.youtube.com/watch?v=z-PAO2WU1QQ&list=PL9Hl4pk2FsvVssgkcKprDzscKHTKtULWn&index=8
+
+to start express server locally, 
+  nodemon app.js
 
 This Neo4j-based example app displays movie and person data in a manner similar to IMDB.
 It is designed to serve as a template for further development projects.

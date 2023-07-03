@@ -7,61 +7,56 @@ const Movies = require("../models/movies"),
 	loginRequired = require("../middlewares/loginRequired"),
 	dbUtils = require("../neo4j/dbUtils");
 
+// This adds it to the swagger ui
 /**
  * @swagger
  * definition:
- *   Movie:
+ *   Course:
  *     type: object
  *     properties:
  *       id:
  *         type: integer
+ *       identifier:
+ *         type: string
  *       title:
  *         type: string
- *       summary:
- *         type: object
- *       released:
- *         type: integer
- *       duration:
- *         type: integer
- *       rated:
+ *       teacher:
  *         type: string
- *       tagline:
- *         type: string
- *       poster_image:
- *         type: string
- *       my_rating:
- *         type: integer
  */
 
+// This adds it to the swagger ui
 /**
  * @swagger
- * /api/v1/movies:
+ * /api/v1/courses:
  *   get:
  *     tags:
- *     - movies
- *     description: Find all movies
- *     summary: Find all movies
+ *     - courses
+ *     description: Find all courses
+ *     summary: Find all courses
  *     produces:
  *       - application/json
  *     responses:
  *       200:
- *         description: A list of movies
+ *         description: A list of courses
  *         schema:
  *           type: array
  *           items:
- *             $ref: '#/definitions/Movie'
+ *             $ref: '#/definitions/Course'
  */
 exports.list = function (req, res, next) {
-  // Example dbUtils:  { getSession: [Function (anonymous)], dbWhere: [Function (anonymous)] }
+	// Example dbUtils:  { getSession: [Function (anonymous)], dbWhere: [Function (anonymous)] }
 	Courses.getAll(dbUtils.getSession(req))
 		.then((response) => {
-      // Example response:  [
-      //   {
-      //     identifier: 'PL4LFuHwItvKbdK-ogNsOx2X58hHGeQm8c',
-      //     teacher: 'Gavin Lon',
-      //     title: 'Blazor Shopping Cart Application'
-      //   },
-      // ]
+			// Example response:  [
+			//   {
+			//     identifier: 'PL4LFuHwItvKbdK-ogNsOx2X58hHGeQm8c',
+			//     teacher: 'Gavin Lon',
+			//     title: 'Blazor Shopping Cart Application'
+			//   },
+			// ]
+
+      // attach lessons to courses
+      
 			return writeResponse(res, response);
 		})
 		.catch(next);
