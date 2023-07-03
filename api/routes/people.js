@@ -1,7 +1,7 @@
 const People = require("../models/people"),
-  _ = require("lodash"),
-  writeResponse = require("../helpers/response").writeResponse,
-  dbUtils = require("../neo4j/dbUtils");
+	_ = require("lodash"),
+	writeResponse = require("../helpers/response").writeResponse,
+	dbUtils = require("../neo4j/dbUtils");
 
 /**
  * @swagger
@@ -19,7 +19,7 @@ const People = require("../models/people"),
 
 /**
  * @swagger
- * /api/v0/people:
+ * /api/v1/people:
  *   get:
  *     tags:
  *     - people
@@ -36,14 +36,14 @@ const People = require("../models/people"),
  *             $ref: '#/definitions/Person'
  */
 exports.list = function (req, res, next) {
-  People.getAll(dbUtils.getSession(req))
-    .then((response) => writeResponse(res, response))
-    .catch(next);
+	People.getAll(dbUtils.getSession(req))
+		.then((response) => writeResponse(res, response))
+		.catch(next);
 };
 
 /**
  * @swagger
- * /api/v0/people/bacon:
+ * /api/v1/people/bacon:
  *   get:
  *     tags:
  *     - people
@@ -71,21 +71,21 @@ exports.list = function (req, res, next) {
  *             $ref: '#/definitions/Person'
  */
 exports.getBaconPeople = function (req, res, next) {
-  const name1 = req.query.name1;
-  const name2 = req.query.name2;
+	const name1 = req.query.name1;
+	const name2 = req.query.name2;
 
-  People.getBaconPeople(
-    dbUtils.getSession(req),
-    req.query.name1,
-    req.query.name2
-  )
-    .then((response) => writeResponse(res, response))
-    .catch(next);
+	People.getBaconPeople(
+		dbUtils.getSession(req),
+		req.query.name1,
+		req.query.name2
+	)
+		.then((response) => writeResponse(res, response))
+		.catch(next);
 };
 
 /**
  * @swagger
- * /api/v0/people/{id}:
+ * /api/v1/people/{id}:
  *   get:
  *     tags:
  *     - people
@@ -110,10 +110,10 @@ exports.getBaconPeople = function (req, res, next) {
  *         description: Person not found
  */
 exports.findById = function (req, res, next) {
-  const id = req.params.id;
-  if (!id) throw { message: "Invalid id", status: 400 };
+	const id = req.params.id;
+	if (!id) throw { message: "Invalid id", status: 400 };
 
-  People.getById(dbUtils.getSession(req), id)
-    .then((response) => writeResponse(res, response))
-    .catch(next);
+	People.getById(dbUtils.getSession(req), id)
+		.then((response) => writeResponse(res, response))
+		.catch(next);
 };

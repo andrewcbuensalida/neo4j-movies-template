@@ -1,10 +1,10 @@
 // movies.js
 const Users = require("../models/users"),
-  writeResponse = require("../helpers/response").writeResponse,
-  writeError = require("../helpers/response").writeError,
-  loginRequired = require("../middlewares/loginRequired"),
-  dbUtils = require("../neo4j/dbUtils"),
-  _ = require("lodash");
+	writeResponse = require("../helpers/response").writeResponse,
+	writeError = require("../helpers/response").writeError,
+	loginRequired = require("../middlewares/loginRequired"),
+	dbUtils = require("../neo4j/dbUtils"),
+	_ = require("lodash");
 
 /**
  * @swagger
@@ -22,7 +22,7 @@ const Users = require("../models/users"),
 
 /**
  * @swagger
- * /api/v0/register:
+ * /api/v1/register:
  *   post:
  *     tags:
  *     - users
@@ -48,24 +48,24 @@ const Users = require("../models/users"),
  *         description: Error message(s)
  */
 exports.register = function (req, res, next) {
-  const username = _.get(req.body, "username");
-  const password = _.get(req.body, "password");
+	const username = _.get(req.body, "username");
+	const password = _.get(req.body, "password");
 
-  if (!username) {
-    throw { username: "This field is required.", status: 400 };
-  }
-  if (!password) {
-    throw { password: "This field is required.", status: 400 };
-  }
+	if (!username) {
+		throw { username: "This field is required.", status: 400 };
+	}
+	if (!password) {
+		throw { password: "This field is required.", status: 400 };
+	}
 
-  Users.register(dbUtils.getSession(req), username, password)
-    .then((response) => writeResponse(res, response, 201))
-    .catch(next);
+	Users.register(dbUtils.getSession(req), username, password)
+		.then((response) => writeResponse(res, response, 201))
+		.catch(next);
 };
 
 /**
  * @swagger
- * /api/v0/login:
+ * /api/v1/login:
  *   post:
  *     tags:
  *     - users
@@ -93,24 +93,24 @@ exports.register = function (req, res, next) {
  *         description: invalid credentials
  */
 exports.login = function (req, res, next) {
-  const username = _.get(req.body, "username");
-  const password = _.get(req.body, "password");
+	const username = _.get(req.body, "username");
+	const password = _.get(req.body, "password");
 
-  if (!username) {
-    throw { username: "This field is required.", status: 400 };
-  }
-  if (!password) {
-    throw { password: "This field is required.", status: 400 };
-  }
+	if (!username) {
+		throw { username: "This field is required.", status: 400 };
+	}
+	if (!password) {
+		throw { password: "This field is required.", status: 400 };
+	}
 
-  Users.login(dbUtils.getSession(req), username, password)
-    .then((response) => writeResponse(res, response))
-    .catch(next);
+	Users.login(dbUtils.getSession(req), username, password)
+		.then((response) => writeResponse(res, response))
+		.catch(next);
 };
 
 /**
  * @swagger
- * /api/v0/users/me:
+ * /api/v1/users/me:
  *   get:
  *     tags:
  *     - users
@@ -132,19 +132,19 @@ exports.login = function (req, res, next) {
  *         description: invalid / missing authentication
  */
 exports.me = function (req, res, next) {
-  loginRequired(req, res, () => {
-    const authHeader = req.headers["authorization"];
-    const match = authHeader.match(/^Token (\S+)/);
-    if (!match || !match[1]) {
-      throw {
-        message: "invalid authorization format. Follow `Token <token>`",
-        status: 401,
-      };
-    }
+	loginRequired(req, res, () => {
+		const authHeader = req.headers["authorization"];
+		const match = authHeader.match(/^Token (\S+)/);
+		if (!match || !match[1]) {
+			throw {
+				message: "invalid authorization format. Follow `Token <token>`",
+				status: 401,
+			};
+		}
 
-    const token = match[1];
-    Users.me(dbUtils.getSession(req), token)
-      .then((response) => writeResponse(res, response))
-      .catch(next);
-  });
+		const token = match[1];
+		Users.me(dbUtils.getSession(req), token)
+			.then((response) => writeResponse(res, response))
+			.catch(next);
+	});
 };

@@ -18,11 +18,6 @@ var app = express(),
 
 app.use(nconf.get("api_path"), api);
 
-api.get("/test1", (req, res, next) => {
-  console.log("hello");
-  next();
-});
-
 var swaggerDefinition = {
   info: {
     title: "Neo4j Movie Demo API (Node/Express)",
@@ -74,6 +69,8 @@ api.use(function (req, res, next) {
 //api custom middlewares:
 api.use(setAuthUser);
 api.use(neo4jSessionCleanup);
+
+api.get("/courses", routes.courses.list);
 
 //api routes
 api.post("/register", routes.users.register);

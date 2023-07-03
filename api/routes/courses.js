@@ -1,5 +1,6 @@
 // movies.js
 const Movies = require("../models/movies"),
+	Courses = require("../models/courses"),
 	_ = require("lodash"),
 	writeResponse = require("../helpers/response").writeResponse,
 	writeError = require("../helpers/response").writeError,
@@ -51,8 +52,18 @@ const Movies = require("../models/movies"),
  *             $ref: '#/definitions/Movie'
  */
 exports.list = function (req, res, next) {
-	Movies.getAll(dbUtils.getSession(req))
-		.then((response) => writeResponse(res, response))
+  // Example dbUtils:  { getSession: [Function (anonymous)], dbWhere: [Function (anonymous)] }
+	Courses.getAll(dbUtils.getSession(req))
+		.then((response) => {
+      // Example response:  [
+      //   {
+      //     identifier: 'PL4LFuHwItvKbdK-ogNsOx2X58hHGeQm8c',
+      //     teacher: 'Gavin Lon',
+      //     title: 'Blazor Shopping Cart Application'
+      //   },
+      // ]
+			return writeResponse(res, response);
+		})
 		.catch(next);
 };
 
