@@ -17,7 +17,7 @@ nconf
 			alias: "PORT",
 			describe: "Port to run on.",
 			demand: false,
-			default: 3000,
+			default: 5000,
 		},
 		n: {
 			alias: "neo4j",
@@ -31,7 +31,7 @@ nconf
 		PASSWORD: process.env.NEO4J_PASSWORD,
 		neo4j: "local",
 		"neo4j-local": process.env.NEO4J_URI || "bolt://localhost:7687",
-		base_url: "http://localhost:3000",
+		base_url: "http://localhost:5000",
 		api_path: "/api/v1",
 	});
 
